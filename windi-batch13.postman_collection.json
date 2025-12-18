@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "1fb0592a-a757-499b-ae51-8055ec85de37",
+		"name": "windi-batch13",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50913151",
+		"_collection_link": "https://windidesrianti12-1017396.postman.co/workspace/Windi-Desrianti's-Workspace~9abe1e4d-8a95-4df5-8dd6-a9955a4b9f27/collection/50913151-1fb0592a-a757-499b-ae51-8055ec85de37?action=share&source=collection_link&creator=50913151"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\" : \"admin\",\r\n\"password\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://belajar-bareng.onrender.com/api/login",
+					"protocol": "https",
+					"host": [
+						"belajar-bareng",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"\r",
+							"pm.response.to.have.status(200);\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"First user's username is Ahmad\", () => {\r",
+							"\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"pm.expect(jsonData[0].username).to.eql(\"Ahmad\");\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzY2MDY0NzQzLCJleHAiOjE3NjYwNjgzNDN9.I1Op94LTcfflWTk-OYM5NuTG9MX8wZitsxNBy6xDlX8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://belajar-bareng.onrender.com/api/users",
+					"protocol": "https",
+					"host": [
+						"belajar-bareng",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
